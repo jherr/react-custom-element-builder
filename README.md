@@ -23,7 +23,7 @@ window.customElements.define('my-element', createCustomElement(MyReactComponent)
 
 # Attributes
 
-You have to specify all the attributes you want to watch.
+You have to specify all the attributes you want to watch. Attributes are automatically coerced to props for the React component.
 
 ```js
 window.customElements.define('my-element', createCustomElement(MyReactComponent, {
@@ -81,6 +81,8 @@ window.customElements.define('my-video', createCustomElement(MyVideoComponent, {
   },
 }));
 ```
+
+The point of making custom elements is for these elements to behave as you would think a native HTML element would behave. So if a native HTML element would have some methods you should add them.
 
 # Emitting events
 
