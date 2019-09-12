@@ -8,6 +8,10 @@
     "test": "npm run lint && jest --collect-coverage",
     "lint": "eslint index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jherr/react-custom-element-builder"
+  },
   "author": "Jack Herrington <jherr@pobox.com>",
   "license": "MIT",
   "dependencies": {
