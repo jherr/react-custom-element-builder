@@ -6,6 +6,9 @@ jobs:
 
     working_directory: ~/repo
 
+    store_test_results:
+      path: coverage
+
     steps:
       - checkout
 

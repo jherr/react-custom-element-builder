@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jherr/react-custom-element-builder.svg?style=svg)](https://circleci.com/gh/jherr/react-custom-element-builder)
+
 react-custom-element-builder
 ============================
 
