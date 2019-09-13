@@ -13,7 +13,7 @@ To install:
 yarn add react-custom-element-builder
 ```
 
-# Smple use
+# Simple use
 
 Here is the simplest possible use:
 
