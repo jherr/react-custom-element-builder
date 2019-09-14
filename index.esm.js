@@ -47,102 +47,101 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var _default = function _default(Component) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return (
+    /*#__PURE__*/
+    function (_HTMLElement) {
+      _inherits(NewElement, _HTMLElement);
 
-  var NewElement =
-  /*#__PURE__*/
-  function (_HTMLElement) {
-    _inherits(NewElement, _HTMLElement);
-
-    _createClass(NewElement, null, [{
-      key: "observedAttributes",
-      get: function get() {
-        return Object.keys(options.attributes || {});
-      }
-    }]);
-
-    function NewElement() {
-      var _this;
-
-      _classCallCheck(this, NewElement);
-
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(NewElement).call(this));
-      _this.props = {};
-      Object.keys(options.methods || {}).forEach(function (methodName) {
-        return NewElement.prototype[methodName] = options.methods[methodName];
-      }); // Connect attributes to properties automatically
-
-      Object.keys(options.attributes || {}).forEach(function (propKey) {
-        Object.defineProperty(_assertThisInitialized(_this), propKey, {
-          get: function get() {
-            return _this.getAttribute(propKey);
-          },
-          set: function set(value) {
-            _this.setAttribute(propKey, value);
-          }
-        });
-      }); // Add getters and setters for properties
-
-      Object.keys(options.properties || {}).forEach(function (propKey) {
-        _this.props[propKey] = options.properties[propKey]["default"];
-        Object.defineProperty(_assertThisInitialized(_this), propKey, {
-          get: function get() {
-            return _this.props[propKey];
-          },
-          set: function set(value) {
-            _this.props[propKey] = value;
-
-            _this.render();
-          }
-        });
-      });
-      return _this;
-    }
-
-    _createClass(NewElement, [{
-      key: "connectedCallback",
-      value: function connectedCallback() {
-        this.attachShadow({
-          mode: 'open'
-        });
-        this.render();
-        (0, _reactShadowDomRetargetEvents["default"])(this.shadowRoot);
-      }
-    }, {
-      key: "disconnectedCallback",
-      value: function disconnectedCallback() {
-        _reactDom["default"].unmountComponentAtNode(this.shadowRoot);
-      }
-    }, {
-      key: "render",
-      value: function render() {
-        if (this.shadowRoot) {
-          _reactDom["default"].render(_react["default"].createElement(Component, this.reactProps), this.shadowRoot);
+      _createClass(NewElement, null, [{
+        key: "observedAttributes",
+        get: function get() {
+          return Object.keys(options.attributes || {});
         }
-      }
-    }, {
-      key: "attributeChangedCallback",
-      value: function attributeChangedCallback() {
-        this.render();
-      }
-    }, {
-      key: "reactProps",
-      get: function get() {
-        var currentProps = _objectSpread({}, this.props, {}, options.attributes || {});
+      }]);
 
-        var attrs = this.attributes;
+      function NewElement() {
+        var _this;
 
-        for (var i = attrs.length - 1; i >= 0; i--) {
-          currentProps[attrs[i].name] = attrs[i].value;
+        _classCallCheck(this, NewElement);
+
+        _this = _possibleConstructorReturn(this, _getPrototypeOf(NewElement).call(this));
+        _this._reference = null;
+        _this.props = {};
+        Object.keys(options.methods || {}).forEach(function (methodName) {
+          NewElement.prototype[methodName] = options.methods[methodName];
+        }); // Connect attributes to properties automatically
+
+        Object.keys(options.attributes || {}).forEach(function (propKey) {
+          Object.defineProperty(_assertThisInitialized(_this), propKey, {
+            get: function get() {
+              return _this.getAttribute(propKey);
+            },
+            set: function set(value) {
+              _this.setAttribute(propKey, value);
+            }
+          });
+        }); // Add getters and setters for properties
+
+        Object.keys(options.properties || {}).forEach(function (propKey) {
+          _this.props[propKey] = options.properties[propKey]["default"];
+          Object.defineProperty(_assertThisInitialized(_this), propKey, {
+            get: function get() {
+              return _this.props[propKey];
+            },
+            set: function set(value) {
+              _this.props[propKey] = value;
+
+              _this.render();
+            }
+          });
+        });
+        return _this;
+      }
+
+      _createClass(NewElement, [{
+        key: "connectedCallback",
+        value: function connectedCallback() {
+          this.attachShadow({
+            mode: 'open'
+          });
+          this.render();
+          (0, _reactShadowDomRetargetEvents["default"])(this.shadowRoot);
         }
+      }, {
+        key: "disconnectedCallback",
+        value: function disconnectedCallback() {
+          _reactDom["default"].unmountComponentAtNode(this.shadowRoot);
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          if (this.shadowRoot) {
+            this._reference = _reactDom["default"].render(_react["default"].createElement(Component, this.reactProps), this.shadowRoot);
+          }
+        }
+      }, {
+        key: "attributeChangedCallback",
+        value: function attributeChangedCallback() {
+          this.render();
+        }
+      }, {
+        key: "reactProps",
+        get: function get() {
+          var currentProps = _objectSpread({}, this.props, {}, options.attributes || {});
 
-        return currentProps;
-      }
-    }]);
+          var attrs = this.attributes;
 
-    return NewElement;
-  }(_wrapNativeSuper(HTMLElement));
+          for (var i = attrs.length - 1; i >= 0; i -= 1) {
+            currentProps[attrs[i].name] = attrs[i].value;
+          }
 
-  return NewElement;
+          return currentProps;
+        }
+      }]);
+
+      return NewElement;
+    }(_wrapNativeSuper(HTMLElement))
+  );
 };
 
 exports["default"] = _default;

@@ -86,6 +86,20 @@ window.customElements.define('my-video', createCustomElement(MyVideoComponent, {
 
 The point of making custom elements is for these elements to behave as you would think a native HTML element would behave. So if a native HTML element would have some methods you should add them.
 
+# Stateful components
+
+For stateful components a reference to the react component is available on the `_reference` property. You can access that externally or within a method like so:
+
+```js
+window.customElements.define('my-video', createCustomElement(MyVideoComponent, {
+  methods: {
+    play() {
+      this._reference.play();
+    },
+  },
+}));
+```
+
 # Emitting events
 
 Events will not pass from your React component up to the host page without adding the `composed` flag. Here is an example:
@@ -95,3 +109,4 @@ this.myRef.dispatchEvent(new CustomEvent('my-click', {
   composed: true,
 }));
 ```
+
